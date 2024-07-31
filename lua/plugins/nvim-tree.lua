@@ -6,6 +6,7 @@ return {
 		require("nvim-tree").setup({
 			filters = {
 				dotfiles = false,
+				git_ignored = false,
 			},
 			view = {
 				adaptive_size = true,

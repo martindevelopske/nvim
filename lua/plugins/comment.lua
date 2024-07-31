@@ -1,7 +1,7 @@
 return {
 	"numToStr/Comment.nvim",
 	opts = {
-		toggler = {
+		      toggler = {
 			line = "gtc",
 			block = "gtb",
 		},
