@@ -9,12 +9,12 @@ local config = function()
 	local capabilities = cmp_nvim_lsp.default_capabilities()
 
 	-- solidity
-	lspconfig.solidity_ls.setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-		filetypes = { "solidity" },
-		root_dir = lspconfig.util.root_pattern("hardhat.config.*", ".git"),
-	})
+	-- lspconfig.solidity_ls.setup({
+	-- 	capabilities = capabilities,
+	-- 	on_attach = on_attach,
+	-- 	filetypes = { "solidity" },
+	-- 	root_dir = lspconfig.util.root_pattern("hardhat.config.*", ".git"),
+	-- })
 
 	-- lua
 	lspconfig.lua_ls.setup({
@@ -61,7 +61,7 @@ local config = function()
 	})
 
 	-- typescript
-	lspconfig.tsserver.setup({
+	lspconfig.ts_ls.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 		filetypes = {
@@ -128,8 +128,8 @@ local config = function()
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 	end
 
-	local solhint = require("efmls-configs.linters.solhint")
-	local prettier_d = require("efmls-configs.formatters.prettier_d")
+--	local solhint = require("efmls-configs.linters.solhint")
+	local prettier_d = require("efmls-configs.formatters.prettier")
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
 	local flake8 = require("efmls-configs.linters.flake8")
@@ -145,7 +145,7 @@ local config = function()
 	-- configure efm server
 	lspconfig.efm.setup({
 		filetypes = {
-			"solidity",
+	
 			"lua",
 			"python",
 			"json",
@@ -174,7 +174,7 @@ local config = function()
 		},
 		settings = {
 			languages = {
-				solidity = { solhint, prettier_d },
+				--	solidity = { solhint, prettier_d },
 				lua = { luacheck, stylua },
 				python = { flake8, black },
 				typescript = { eslint, prettier_d },
@@ -184,8 +184,8 @@ local config = function()
 				javascript = { eslint, prettier_d },
 				javascriptreact = { eslint, prettier_d },
 				typescriptreact = { eslint, prettier_d },
-				svelte = { eslint, prettier_d },
-				vue = { eslint, prettier_d },
+				--	svelte = { eslint, prettier_d },
+				--	vue = { eslint, prettier_d },
 				markdown = { prettier_d },
 				docker = { hadolint, prettier_d },
 				html = { prettier_d },

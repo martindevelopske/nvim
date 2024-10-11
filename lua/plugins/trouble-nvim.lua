@@ -34,4 +34,6 @@ return {
 			require("trouble").toggle("lsp_references")
 		end, "Toggle LSP References"),
 	},
-}
+} 
+
+-- A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.

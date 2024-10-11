@@ -1,3 +1,6 @@
+-- a Neovim plugin that integrates Tree-sitter into Neovim, taking advantage of Tree-sitter's powerful parsing capabilities
+-- to enhance the development experience.
+
 local config = function()
 	require("nvim-treesitter.configs").setup({
 		build = ":TSUpdate",

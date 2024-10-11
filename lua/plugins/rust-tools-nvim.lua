@@ -1,3 +1,5 @@
+-- A plugin to improve your rust experience in neovim.
+
 local on_attach = require("util.lsp").on_attach
 
 return {

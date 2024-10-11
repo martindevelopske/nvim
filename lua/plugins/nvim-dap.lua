@@ -1,3 +1,5 @@
+-- a Debug Adapter Protocol client implementation 
+
 local debugging_signs = require("util.icons").debugging_signs
 
 return {

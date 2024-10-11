@@ -1,3 +1,5 @@
+-- improve lsp experences in neovim
+
 return {
 	"glepnir/lspsaga.nvim",
 	lazy = false,
