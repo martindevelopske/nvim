@@ -24,13 +24,8 @@ return {
 			},
 		})
 
-		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-			conform.fomat({
-
-
-
-
-
+		vim.keymap.set({ "n", "v" }, "<leader>fp", function()
+			conform.format({
 
 				lsp_fallback = true,
 				async = false,
