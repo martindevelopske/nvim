@@ -7,7 +7,7 @@ local config = function()
 	local cmp_nvim_lsp = require("cmp_nvim_lsp")
 	local lspconfig = require("lspconfig")
 	local capabilities = cmp_nvim_lsp.default_capabilities()
-
+	local rust_tools = require("rust-tools")
 	--disable inline diagnostics and show them on pop up window
 	vim.diagnostic.config({
 		virtual_text = false,
@@ -21,6 +21,37 @@ local config = function()
 	-- 	filetypes = { "solidity" },
 	-- 	root_dir = lspconfig.util.root_pattern("hardhat.config.*", ".git"),
 	-- })
+
+	-- Rust
+	rust_tools.setup({
+		server = {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				["rust-analyzer"] = {
+					assist = {
+						importGranularity = "module",
+						importPrefix = "by_self",
+					},
+					cargo = {
+						allFeatures = true,
+					},
+					procMacro = {
+						enable = true,
+					},
+					checkOnSave = {
+						command = "clippy",
+					},
+				},
+			},
+		},
+		-- -- Add custom hover settings for the floating window
+		-- hover = {
+		-- 	border = "rounded", -- Use 'rounded' or any style you prefer
+		-- 	max_width = 80, -- Adjust the maximum width
+		-- 	max_height = 20, -- Adjust the maximum height
+		-- },
+	})
 
 	-- lua
 	lspconfig.lua_ls.setup({
@@ -214,5 +245,6 @@ return {
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp",
+		"onsails/lspkind.nvim",
 	},
 }
