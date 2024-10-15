@@ -8,9 +8,15 @@ local config = function()
 	local lspconfig = require("lspconfig")
 	local capabilities = cmp_nvim_lsp.default_capabilities()
 
-	-- solidity
-	-- lspconfig.solidity_ls.setup({
-	-- 	capabilities = capabilities,
+	--disable inline diagnostics and show them on pop up window
+	vim.diagnostic.config({
+		virtual_text = false,
+	})
+	--disable inline diagnostics and show them on pop up window
+	-- Show line diagnostics automatically in hover window
+	vim.o.updatetime = 250
+	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, border="rounded"})]])
+	-- Show line diagnostics automatically in hover window
 	-- 	on_attach = on_attach,
 	-- 	filetypes = { "solidity" },
 	-- 	root_dir = lspconfig.util.root_pattern("hardhat.config.*", ".git"),
@@ -128,10 +134,10 @@ local config = function()
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 	end
 
---	local solhint = require("efmls-configs.linters.solhint")
+	--	local solhint = require("efmls-configs.linters.solhint")
 	local prettier_d = require("efmls-configs.formatters.prettier")
 	local luacheck = require("efmls-configs.linters.luacheck")
-	local stylua = require("efmls-configs.formatters.stylua")
+	--	local solhint = require("efmls-configs.linters.solhint")
 	local flake8 = require("efmls-configs.linters.flake8")
 	local black = require("efmls-configs.formatters.black")
 	local eslint = require("efmls-configs.linters.eslint")
@@ -145,10 +151,10 @@ local config = function()
 	-- configure efm server
 	lspconfig.efm.setup({
 		filetypes = {
-	
+
 			"lua",
 			"python",
-			"json",
+
 			"jsonc",
 			"sh",
 			"javascript",
