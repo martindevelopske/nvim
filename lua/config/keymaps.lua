@@ -38,7 +38,12 @@ mapkey("<leader>pa", "ShowPath", "n") -- Show Full File Path
 -- Indenting
 vim.keymap.set("v", "<", "<gv", { silent = true, noremap = true })
 vim.keymap.set("v", ">", ">gv", { silent = true, noremap = true })
+-- moving code around
 
+vim.api.nvim_set_keymap("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 -- keybindings for nvim-dap
 vim.api.nvim_set_keymap("n", "<F5>", "<Cmd>lua require'dap'.continue()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<F10>", "<Cmd>lua require'dap'.step_over()<CR>", { noremap = true, silent = true })
@@ -52,13 +57,13 @@ vim.api.nvim_set_keymap(
 )
 
 -- Keymap to open the DAP UI
-vim.api.nvim_set_keymap('n', '<Leader>du', '<Cmd>lua require\'dapui\'.open()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>du", "<Cmd>lua require'dapui'.open()<CR>", { noremap = true, silent = true })
 
 -- Keymap to close the DAP UI
-vim.api.nvim_set_keymap('n', '<Leader>dc', '<Cmd>lua require\'dapui\'.close()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>dc", "<Cmd>lua require'dapui'.close()<CR>", { noremap = true, silent = true })
 
 -- Alternatively, you can toggle DAP UI (open if closed, close if open)
-vim.api.nvim_set_keymap('n', '<Leader>dt', '<Cmd>lua require\'dapui\'.toggle()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>dt", "<Cmd>lua require'dapui'.toggle()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>dr", "<Cmd>lua require'dap'.repl.open()<CR>", { noremap = true, silent = true })
 local api = vim.api
 
